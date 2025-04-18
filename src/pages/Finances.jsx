@@ -263,8 +263,8 @@ function Finances() {
             >
               Weekly
             </button>
-            <button className="btn btn-sm btn-outline ml-2">
-              <Download size={14} className="mr-1" />
+            <button className="px-3 py-1 text-sm border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors ml-2">
+              <Download size={14} className="mr-1 inline" />
               Export
             </button>
           </div>
@@ -292,8 +292,8 @@ function Finances() {
           <div className="card h-full">
             <div className="p-4 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
               <h3 className="font-semibold text-lg">Accounts</h3>
-              <button className="btn btn-sm btn-outline">
-                <Plus size={14} className="mr-1" />
+              <button className="px-3 py-1 text-sm border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors">
+                <Plus size={14} className="mr-1 inline" />
                 Add
               </button>
             </div>
@@ -341,8 +341,8 @@ function Finances() {
                     <ChevronDown size={14} />
                   </div>
                 </div>
-                <button className="btn btn-sm btn-outline">
-                  <Plus size={14} className="mr-1" />
+                <button className="px-3 py-1 text-sm border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors">
+                  <Plus size={14} className="mr-1 inline" />
                   New
                 </button>
               </div>
@@ -442,12 +442,12 @@ function Finances() {
               </div>
               
               <div className="mt-4 flex justify-between items-center">
-                <button className="btn btn-sm btn-outline flex items-center">
+                <button className="px-3 py-1 text-sm border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex items-center">
                   <ArrowLeft size={14} className="mr-1" />
                   Previous
                 </button>
                 <span className="text-sm text-surface-600 dark:text-surface-400">Page 1 of 3</span>
-                <button className="btn btn-sm btn-outline flex items-center">
+                <button className="px-3 py-1 text-sm border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex items-center">
                   Next
                   <ArrowRight size={14} className="ml-1" />
                 </button>

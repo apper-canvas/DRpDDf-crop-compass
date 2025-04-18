@@ -191,7 +191,7 @@ function Inventory() {
             </button>
           )}
           
-          <button className="btn btn-primary ml-auto">
+          <button className="flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors ml-auto">
             <Plus size={18} className="mr-1" />
             Add Item
           </button>
@@ -208,7 +208,7 @@ function Inventory() {
         <div className="p-4 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
           <h3 className="font-semibold text-lg">Inventory Items ({filteredItems.length})</h3>
           <div className="flex items-center space-x-2">
-            <button className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-surface-600 dark:text-surface-400" title="Refresh">
+            <button className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-surface-600 dark:text-surface-400">
               <RefreshCw size={16} />
             </button>
             <button className="flex items-center text-sm text-surface-600 dark:text-surface-400 hover:text-surface-800 dark:hover:text-surface-200">
@@ -255,10 +255,10 @@ function Inventory() {
                       <td className="py-3 text-surface-700 dark:text-surface-300">{item.location}</td>
                       <td className="py-3">
                         <div className="flex space-x-2" onClick={(e) => e.stopPropagation()}>
-                          <button className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-blue-600 dark:text-blue-400" title="Edit">
+                          <button className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-blue-600 dark:text-blue-400">
                             <Edit size={16} />
                           </button>
-                          <button className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-red-600 dark:text-red-400" title="Delete">
+                          <button className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-red-600 dark:text-red-400">
                             <Trash2 size={16} />
                           </button>
                         </div>
@@ -289,12 +289,12 @@ function Inventory() {
           <div className="p-4 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
             <h3 className="font-semibold text-lg">Item Details</h3>
             <div className="flex space-x-2">
-              <button className="btn btn-sm btn-outline">
-                <Edit size={14} className="mr-1" />
+              <button className="px-3 py-1 text-sm border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors">
+                <Edit size={14} className="mr-1 inline" />
                 Edit
               </button>
-              <button className="btn btn-sm btn-primary">
-                <RefreshCw size={14} className="mr-1" />
+              <button className="px-3 py-1 text-sm bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors">
+                <RefreshCw size={14} className="mr-1 inline" />
                 Update Stock
               </button>
             </div>
@@ -357,10 +357,10 @@ function Inventory() {
                 </div>
                 
                 <div className="flex space-x-3">
-                  <button className="btn btn-primary flex-grow">
+                  <button className="flex items-center justify-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow">
                     Add Stock
                   </button>
-                  <button className="btn btn-outline flex-grow">
+                  <button className="flex items-center justify-center px-4 py-2 border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow">
                     Remove Stock
                   </button>
                 </div>
