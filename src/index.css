@@ -2,73 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+:root {
+  /* Primary Colors */
+  --color-primary: 16 185 129; /* Emerald 500 */
+  --color-primary-light: 5 205 153; /* Emerald 400 */
+  --color-primary-dark: 4 146 109; /* Emerald 600 */
   
+  /* Secondary Colors */
+  --color-secondary: 99 102 241; /* Indigo 500 */
+  --color-secondary-light: 129 140 248; /* Indigo 400 */
+  --color-secondary-dark: 79 70 229; /* Indigo 600 */
+  
+  /* Accent Colors */
+  --color-accent: 245 158 11; /* Amber 500 */
+  --color-accent-light: 251 191 36; /* Amber 400 */
+  --color-accent-dark: 217 119 6; /* Amber 600 */
+  
+  /* Surface Colors (Light Mode) */
+  --color-surface-50: 249 250 251; /* Gray 50 */
+  --color-surface-100: 243 244 246; /* Gray 100 */
+  --color-surface-200: 229 231 235; /* Gray 200 */
+  --color-surface-300: 209 213 219; /* Gray 300 */
+  --color-surface-400: 156 163 175; /* Gray 400 */
+  --color-surface-500: 107 114 128; /* Gray 500 */
+  --color-surface-600: 75 85 99; /* Gray 600 */
+  --color-surface-700: 55 65 81; /* Gray 700 */
+  --color-surface-800: 31 41 55; /* Gray 800 */
+  --color-surface-900: 17 24 39; /* Gray 900 */
+  
+  /* Success, Warning, Error Colors */
+  --color-success: 16 185 129; /* Emerald 500 */
+  --color-warning: 245 158 11; /* Amber 500 */
+  --color-error: 239 68 68; /* Red 500 */
+}
+
+@layer base {
   body {
-    @apply font-sans antialiased;
+    @apply font-sans;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
+    @apply text-surface-800 dark:text-surface-100;
+  }
+  
+  p {
+    @apply text-surface-700 dark:text-surface-300;
   }
 }
 
 @layer components {
+  .card {
+    @apply bg-white dark:bg-surface-800 rounded-lg shadow-sm border border-surface-200 dark:border-surface-700 overflow-hidden;
+  }
+  
   .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply px-4 py-2 rounded-lg font-medium flex items-center justify-center transition-colors;
+  }
+  
+  .btn-sm {
+    @apply px-3 py-1 text-sm rounded-lg;
   }
   
   .btn-primary {
-    @apply bg-primary text-white hover:bg-primary-dark focus:ring-primary;
+    @apply bg-primary text-white hover:bg-primary-dark;
   }
   
   .btn-secondary {
-    @apply bg-secondary text-white hover:bg-secondary-dark focus:ring-secondary;
+    @apply bg-secondary text-white hover:bg-secondary-dark;
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-white hover:bg-accent-dark;
+  }
+  
+  .btn-success {
+    @apply bg-success text-white hover:bg-success/90;
   }
   
   .btn-outline {
-    @apply border border-surface-300 dark:border-surface-600 bg-transparent hover:bg-surface-100 dark:hover:bg-surface-700 focus:ring-surface-400;
-  }
-  
-  .card {
-    @apply bg-white dark:bg-surface-800 rounded-xl shadow-card dark:shadow-none border border-surface-200 dark:border-surface-700 overflow-hidden;
-  }
-  
-  .input-field {
-    @apply w-full px-3 py-2 bg-white dark:bg-surface-800 border border-surface-300 dark:border-surface-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200;
-  }
-  
-  .select-field {
-    @apply w-full px-3 py-2 bg-white dark:bg-surface-800 border border-surface-300 dark:border-surface-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 appearance-none;
-  }
-  
-  .label {
-    @apply block text-sm font-medium text-surface-700 dark:text-surface-300 mb-1;
-  }
-}
-
-@layer utilities {
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .text-shadow-lg {
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
-  }
-  
-  .bg-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    @apply border border-surface-300 dark:border-surface-600 bg-transparent text-surface-800 dark:text-surface-200 hover:bg-surface-100 dark:hover:bg-surface-700;
   }
 }
