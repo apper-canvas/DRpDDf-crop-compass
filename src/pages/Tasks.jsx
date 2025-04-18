@@ -51,6 +51,18 @@ function Tasks() {
     setPriorityFilter('all');
   };
 
+  const handleNewTask = () => {
+    console.log('Creating new task');
+  };
+
+  const handleCompleteTask = (taskId) => {
+    console.log('Marking task as complete:', taskId);
+  };
+
+  const handleRejectTask = (taskId) => {
+    console.log('Rejecting task:', taskId);
+  };
+
   return (
     <div className="container mx-auto px-4 py-6">
       {/* Header Section */}
@@ -132,7 +144,10 @@ function Tasks() {
             </button>
           )}
 
-          <button className="flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors ml-auto">
+          <button 
+            onClick={handleNewTask}
+            className="flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors ml-auto"
+          >
             <Plus size={18} className="mr-1" />
             New Task
           </button>
@@ -201,10 +216,16 @@ function Tasks() {
                       <td className="py-3 text-surface-700 dark:text-surface-300">{task.assignee}</td>
                       <td className="py-3">
                         <div className="flex space-x-2" onClick={(e) => e.stopPropagation()}>
-                          <button className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-green-600 dark:text-green-400">
+                          <button 
+                            onClick={() => handleCompleteTask(task.id)}
+                            className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-green-600 dark:text-green-400"
+                          >
                             <Check size={18} />
                           </button>
-                          <button className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-red-600 dark:text-red-400">
+                          <button 
+                            onClick={() => handleRejectTask(task.id)}
+                            className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-red-600 dark:text-red-400"
+                          >
                             <X size={18} />
                           </button>
                         </div>
@@ -235,8 +256,18 @@ function Tasks() {
           <div className="p-4 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
             <h3 className="font-semibold text-lg">Task Details</h3>
             <div className="flex space-x-2">
-              <button className="px-3 py-1 text-sm border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors">Edit</button>
-              <button className="px-3 py-1 text-sm border border-red-500 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-colors">Delete</button>
+              <button 
+                onClick={() => console.log('Edit task:', selectedTask.id)}
+                className="px-3 py-1 text-sm border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors"
+              >
+                Edit
+              </button>
+              <button 
+                onClick={() => console.log('Delete task:', selectedTask.id)}
+                className="px-3 py-1 text-sm border border-red-500 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-colors"
+              >
+                Delete
+              </button>
             </div>
           </div>
           <div className="p-4">
@@ -299,17 +330,26 @@ function Tasks() {
                 
                 <div className="flex space-x-3">
                   {selectedTask.status !== 'completed' ? (
-                    <button className="flex items-center justify-center px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors flex-grow">
+                    <button 
+                      onClick={() => console.log('Mark complete:', selectedTask.id)}
+                      className="flex items-center justify-center px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors flex-grow"
+                    >
                       <Check size={18} className="mr-1" />
                       Mark Complete
                     </button>
                   ) : (
-                    <button className="flex items-center justify-center px-4 py-2 border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow">
+                    <button 
+                      onClick={() => console.log('Mark incomplete:', selectedTask.id)}
+                      className="flex items-center justify-center px-4 py-2 border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow"
+                    >
                       <X size={18} className="mr-1" />
                       Mark Incomplete
                     </button>
                   )}
-                  <button className="flex items-center justify-center px-4 py-2 border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow">
+                  <button 
+                    onClick={() => console.log('Reassign task:', selectedTask.id)}
+                    className="flex items-center justify-center px-4 py-2 border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow"
+                  >
                     Reassign
                   </button>
                 </div>

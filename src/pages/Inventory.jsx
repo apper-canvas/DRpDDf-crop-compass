@@ -61,6 +61,11 @@ function Inventory() {
     setStatusFilter("All Statuses");
   };
 
+  const handleAddItem = () => {
+    // Add item functionality would go here
+    console.log('Adding new inventory item');
+  };
+
   return (
     <div className="container mx-auto px-4 py-6">
       {/* Header Section */}
@@ -191,7 +196,10 @@ function Inventory() {
             </button>
           )}
           
-          <button className="flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors ml-auto">
+          <button 
+            onClick={handleAddItem}
+            className="flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors ml-auto"
+          >
             <Plus size={18} className="mr-1" />
             Add Item
           </button>
@@ -208,10 +216,16 @@ function Inventory() {
         <div className="p-4 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
           <h3 className="font-semibold text-lg">Inventory Items ({filteredItems.length})</h3>
           <div className="flex items-center space-x-2">
-            <button className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-surface-600 dark:text-surface-400">
+            <button 
+              onClick={() => console.log('Refresh inventory')}
+              className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-surface-600 dark:text-surface-400"
+            >
               <RefreshCw size={16} />
             </button>
-            <button className="flex items-center text-sm text-surface-600 dark:text-surface-400 hover:text-surface-800 dark:hover:text-surface-200">
+            <button 
+              onClick={() => console.log('Show filtered results')}
+              className="flex items-center text-sm text-surface-600 dark:text-surface-400 hover:text-surface-800 dark:hover:text-surface-200"
+            >
               <Filter size={14} className="mr-1" />
               <span>Filtered Results</span>
             </button>
@@ -255,10 +269,16 @@ function Inventory() {
                       <td className="py-3 text-surface-700 dark:text-surface-300">{item.location}</td>
                       <td className="py-3">
                         <div className="flex space-x-2" onClick={(e) => e.stopPropagation()}>
-                          <button className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-blue-600 dark:text-blue-400">
+                          <button 
+                            onClick={() => console.log('Edit item:', item.id)}
+                            className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-blue-600 dark:text-blue-400"
+                          >
                             <Edit size={16} />
                           </button>
-                          <button className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-red-600 dark:text-red-400">
+                          <button 
+                            onClick={() => console.log('Delete item:', item.id)}
+                            className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700 text-red-600 dark:text-red-400"
+                          >
                             <Trash2 size={16} />
                           </button>
                         </div>
@@ -289,11 +309,17 @@ function Inventory() {
           <div className="p-4 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
             <h3 className="font-semibold text-lg">Item Details</h3>
             <div className="flex space-x-2">
-              <button className="px-3 py-1 text-sm border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors">
+              <button 
+                onClick={() => console.log('Edit item details:', selectedItem.id)}
+                className="px-3 py-1 text-sm border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors"
+              >
                 <Edit size={14} className="mr-1 inline" />
                 Edit
               </button>
-              <button className="px-3 py-1 text-sm bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors">
+              <button 
+                onClick={() => console.log('Update stock for:', selectedItem.id)}
+                className="px-3 py-1 text-sm bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors"
+              >
                 <RefreshCw size={14} className="mr-1 inline" />
                 Update Stock
               </button>
@@ -357,10 +383,16 @@ function Inventory() {
                 </div>
                 
                 <div className="flex space-x-3">
-                  <button className="flex items-center justify-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow">
+                  <button 
+                    onClick={() => console.log('Add stock for:', selectedItem.id)}
+                    className="flex items-center justify-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow"
+                  >
                     Add Stock
                   </button>
-                  <button className="flex items-center justify-center px-4 py-2 border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow">
+                  <button 
+                    onClick={() => console.log('Remove stock for:', selectedItem.id)}
+                    className="flex items-center justify-center px-4 py-2 border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow"
+                  >
                     Remove Stock
                   </button>
                 </div>

@@ -26,6 +26,18 @@ function Fields() {
     setSelectedField(field);
   };
 
+  const handleAddField = () => {
+    console.log('Adding new field');
+  };
+
+  const handleImportFields = () => {
+    console.log('Importing fields');
+  };
+
+  const handleScheduleTask = () => {
+    console.log('Scheduling task for field:', selectedField?.id);
+  };
+
   return (
     <div className="container mx-auto px-4 py-6">
       {/* Header Section */}
@@ -66,11 +78,17 @@ function Fields() {
         </div>
 
         <div className="flex space-x-3 w-full md:w-auto">
-          <button className="flex items-center justify-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow md:flex-grow-0">
+          <button 
+            onClick={handleAddField}
+            className="flex items-center justify-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow md:flex-grow-0"
+          >
             <Plus size={18} className="mr-1" />
             Add Field
           </button>
-          <button className="flex items-center justify-center px-4 py-2 border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow md:flex-grow-0">
+          <button 
+            onClick={handleImportFields}
+            className="flex items-center justify-center px-4 py-2 border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors flex-grow md:flex-grow-0"
+          >
             Import Fields
           </button>
         </div>
@@ -131,7 +149,10 @@ function Fields() {
               )}
             </div>
             
-            <button className="w-full mt-4 flex items-center justify-center px-4 py-2 border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors">
+            <button 
+              onClick={handleAddField}
+              className="w-full mt-4 flex items-center justify-center px-4 py-2 border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors"
+            >
               <Plus size={16} className="mr-1" />
               Add New Field
             </button>
@@ -150,8 +171,18 @@ function Fields() {
               <div className="p-4 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
                 <h3 className="font-semibold text-lg">{selectedField.name} Details</h3>
                 <div className="flex space-x-2">
-                  <button className="px-3 py-1 text-sm border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors">Edit</button>
-                  <button className="px-3 py-1 text-sm border border-red-500 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-colors">Delete</button>
+                  <button 
+                    onClick={() => console.log('Edit field:', selectedField.id)}
+                    className="px-3 py-1 text-sm border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors"
+                  >
+                    Edit
+                  </button>
+                  <button 
+                    onClick={() => console.log('Delete field:', selectedField.id)}
+                    className="px-3 py-1 text-sm border border-red-500 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-colors"
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
               <div className="p-4">
@@ -208,7 +239,10 @@ function Fields() {
                   <div className="bg-surface-50 dark:bg-surface-700/50 rounded-lg p-4">
                     <div className="text-center py-6">
                       <p className="text-surface-600 dark:text-surface-400 mb-4">No upcoming tasks scheduled for this field.</p>
-                      <button className="px-3 py-1 text-sm bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors">
+                      <button 
+                        onClick={handleScheduleTask}
+                        className="px-3 py-1 text-sm bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors"
+                      >
                         <Plus size={16} className="mr-1 inline" />
                         Schedule Task
                       </button>
@@ -226,7 +260,10 @@ function Fields() {
               <p className="text-surface-600 dark:text-surface-400 mb-6 max-w-md mx-auto">
                 Select a field from the list to view its details, or add a new field to get started.
               </p>
-              <button className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors">
+              <button 
+                onClick={handleAddField}
+                className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors"
+              >
                 <Plus size={18} className="mr-1 inline" />
                 Add New Field
               </button>
