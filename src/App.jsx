@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Home from './pages/Home';
-import Fields from './pages/Fields';
-import Tasks from './pages/Tasks';
-import Inventory from './pages/Inventory';
-import Finances from './pages/Finances';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -17,7 +13,6 @@ function App() {
   
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState('en');
-  const location = useLocation();
   
   const languages = [
     { code: 'en', name: 'English' },
@@ -35,11 +30,6 @@ function App() {
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
   }, [darkMode]);
 
-  useEffect(() => {
-    // Close mobile menu when route changes
-    setMobileMenuOpen(false);
-  }, [location]);
-
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
@@ -50,11 +40,6 @@ function App() {
 
   const changeLanguage = (code) => {
     setCurrentLanguage(code);
-    setMobileMenuOpen(false);
-  };
-
-  // Handle navigation click for mobile
-  const handleNavClick = () => {
     setMobileMenuOpen(false);
   };
 
@@ -77,11 +62,11 @@ function App() {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className={`text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Dashboard</Link>
-            <Link to="/fields" className={`text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/fields' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Fields</Link>
-            <Link to="/tasks" className={`text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/tasks' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Tasks</Link>
-            <Link to="/inventory" className={`text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/inventory' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Inventory</Link>
-            <Link to="/finances" className={`text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/finances' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Finances</Link>
+            <a href="/" className="text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors">Dashboard</a>
+            <a href="#fields" className="text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors">Fields</a>
+            <a href="#tasks" className="text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors">Tasks</a>
+            <a href="#inventory" className="text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors">Inventory</a>
+            <a href="#finances" className="text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors">Finances</a>
           </nav>
           
           <div className="flex items-center space-x-4">
@@ -134,11 +119,11 @@ function App() {
               className="md:hidden bg-white dark:bg-surface-800 border-t border-surface-200 dark:border-surface-700"
             >
               <div className="container mx-auto px-4 py-3 flex flex-col space-y-4">
-                <Link to="/" onClick={handleNavClick} className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Dashboard</Link>
-                <Link to="/fields" onClick={handleNavClick} className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/fields' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Fields</Link>
-                <Link to="/tasks" onClick={handleNavClick} className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/tasks' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Tasks</Link>
-                <Link to="/inventory" onClick={handleNavClick} className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/inventory' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Inventory</Link>
-                <Link to="/finances" onClick={handleNavClick} className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/finances' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Finances</Link>
+                <a href="/" className="py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors" onClick={() => setMobileMenuOpen(false)}>Dashboard</a>
+                <a href="#fields" className="py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors" onClick={() => setMobileMenuOpen(false)}>Fields</a>
+                <a href="#tasks" className="py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors" onClick={() => setMobileMenuOpen(false)}>Tasks</a>
+                <a href="#inventory" className="py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors" onClick={() => setMobileMenuOpen(false)}>Inventory</a>
+                <a href="#finances" className="py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors" onClick={() => setMobileMenuOpen(false)}>Finances</a>
                 
                 <div className="py-2">
                   <label className="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-1">Language</label>
@@ -162,10 +147,6 @@ function App() {
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/fields" element={<Fields />} />
-          <Route path="/tasks" element={<Tasks />} />
-          <Route path="/inventory" element={<Inventory />} />
-          <Route path="/finances" element={<Finances />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
