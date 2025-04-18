@@ -53,6 +53,11 @@ function App() {
     setMobileMenuOpen(false);
   };
 
+  // Handle navigation click for mobile
+  const handleNavClick = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
@@ -129,11 +134,11 @@ function App() {
               className="md:hidden bg-white dark:bg-surface-800 border-t border-surface-200 dark:border-surface-700"
             >
               <div className="container mx-auto px-4 py-3 flex flex-col space-y-4">
-                <Link to="/" className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Dashboard</Link>
-                <Link to="/fields" className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/fields' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Fields</Link>
-                <Link to="/tasks" className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/tasks' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Tasks</Link>
-                <Link to="/inventory" className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/inventory' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Inventory</Link>
-                <Link to="/finances" className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/finances' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Finances</Link>
+                <Link to="/" onClick={handleNavClick} className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Dashboard</Link>
+                <Link to="/fields" onClick={handleNavClick} className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/fields' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Fields</Link>
+                <Link to="/tasks" onClick={handleNavClick} className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/tasks' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Tasks</Link>
+                <Link to="/inventory" onClick={handleNavClick} className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/inventory' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Inventory</Link>
+                <Link to="/finances" onClick={handleNavClick} className={`py-2 text-surface-700 dark:text-surface-300 hover:text-primary dark:hover:text-primary-light transition-colors ${location.pathname === '/finances' ? 'text-primary dark:text-primary-light font-medium' : ''}`}>Finances</Link>
                 
                 <div className="py-2">
                   <label className="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-1">Language</label>
